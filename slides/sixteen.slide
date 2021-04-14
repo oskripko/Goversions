@@ -1,0 +1,44 @@
+# Go Versions 1.16
+
+Olga Skripko
+8 April 2021
+
+##  1.16 Overall
+- Embedded files
+- Go mod is default
+- Some minor
+
+## Embedded files
+.code ./../csv.go /START OMIT/,/END OMIT/
+- No text, json, csv files anymore outside of the binary
+- Preloaded configuration files (though .env is still better)
+- Preloaded images
+
+## Folder structure
+.image ./../images/file_structure.PNG _ 350
+
+## Server example
+.code ./../server.go /START OMIT/,/END OMIT/
+
+## Go modules
+- now `go build` and `go test` will no longer modify the *go.mod* and *go.sum* files by default
+
+- use of `go get` to build and install packages has been deprecated in favor of `go install`
+
+- in a future release `go get` will not be able to build and install packages anymore
+
+## The ioutil package
+The entire ioutil package is now deprecated.
+
+`ioutil.Discard => io.Discard` \
+`ioutil.NopCloser => io.NopCloser` \
+`ioutil.ReadAll => io.ReadAll` \
+`ioutil.ReadDir => os.ReadDir` \
+`ioutil.ReadFile => os.ReadFile` \
+`ioutil.TempDir => os.MkdirTemp ` \
+`ioutil.TempFile => os.CreateTemp` \
+`ioutil.WriteFile => os.WriteFile` \
+
+## The io/fs package
+.code ./../fs.go /START OMIT/,/END OMIT/
+implement interface File for this

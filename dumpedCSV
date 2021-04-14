@@ -1,0 +1,24 @@
+TEXT fmt.init(SB) /usr/local/Cellar/go/1.16.2/libexec/src/fmt/scan.go
+  scan.go:465		0x10a2c60		65488b0c2530000000	MOVQ GS:0x30, CX
+  scan.go:465		0x10a2c69		483b6110		CMPQ 0x10(CX), SP
+  scan.go:465		0x10a2c6d		0f86c2000000		JBE 0x10a2d35
+
+TEXT main.main(SB) /Users/olga/go/src/versions/csv.go
+....
+  csv.go:12		0x10a2e21		488b05b84e0b00		MOVQ main.csvData(SB), AX
+  csv.go:12		0x10a2e28		488b0db94e0b00		MOVQ main.csvData+8(SB), CX
+...
+  csv.go:12		0x10a2e38		e82373f6ff		CALL runtime.convTstring(SB)
+...
+  print.go:242		0x10a2e5b		488b0536bb0b00		MOVQ os.Stdout(SB), AX
+  print.go:242		0x10a2e62		488d0d1f4d0400		LEAQ go.itab.*os.File,io.Writer(SB), CX
+  print.go:242		0x10a2e69		48890c24		MOVQ CX, 0(SP)
+  print.go:242		0x10a2e6d		4889442408		MOVQ AX, 0x8(SP)
+  print.go:242		0x10a2e72		488d442440		LEAQ 0x40(SP), AX
+  print.go:242		0x10a2e77		4889442410		MOVQ AX, 0x10(SP)
+  print.go:242		0x10a2e7c		48c744241801000000	MOVQ $0x1, 0x18(SP)
+  print.go:242		0x10a2e85		48c744242001000000	MOVQ $0x1, 0x20(SP)
+  print.go:242		0x10a2e8e		e86d9affff		CALL fmt.Fprint(SB)
+...
+  csv.go:11		0x10a2ea0		e8dbf5fbff		CALL runtime.morestack_noctxt(SB)
+  csv.go:11		0x10a2ea5		e956ffffff		JMP main.main(SB)
